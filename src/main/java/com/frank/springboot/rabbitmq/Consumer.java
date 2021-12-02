@@ -1,5 +1,6 @@
 package com.frank.springboot.rabbitmq;
 
+import com.frank.springboot.mqutils.RabbitMQUtils;
 import com.rabbitmq.client.*;
 import org.junit.Test;
 
@@ -47,14 +48,18 @@ public class Consumer {
 
     public static void main(String[] args) throws IOException, TimeoutException {
         //创建连接工厂
-        ConnectionFactory connectionFactory = new ConnectionFactory();
-        connectionFactory.setHost("127.0.0.1");
-        connectionFactory.setPort(5672);
-        connectionFactory.setVirtualHost("/testhost");
-        connectionFactory.setUsername("test");
-        connectionFactory.setPassword("test");
+//        ConnectionFactory connectionFactory = new ConnectionFactory();
+//        connectionFactory.setHost("127.0.0.1");
+//        connectionFactory.setPort(5672);
+//        connectionFactory.setVirtualHost("/testhost");
+//        connectionFactory.setUsername("test");
+//        connectionFactory.setPassword("test");
+//
+//        Connection connection = connectionFactory.newConnection();//创建连接对象
 
-        Connection connection = connectionFactory.newConnection();//创建连接对象
+        //通过工具类获取连接对象
+        Connection connection = RabbitMQUtils.getConnection();
+
         Channel channel = connection.createChannel();//创建通道
 
         //通道绑定队列

@@ -63,11 +63,11 @@ public class Consumer {
         Channel channel = connection.createChannel();//创建通道
 
         //通道绑定队列
-        channel.queueDeclare("hellomq",false,false,false,null);//注意生产者消费者对同一个队列定义是一样的，比如都是持久化
+        channel.queueDeclare("hellomq2",true,false,true,null);//注意生产者消费者对同一个队列定义是一样的，比如都是持久化
 
         //消费消息
         //参数1：消费哪个队列的消息 队列名称；参数2：开启消息的自动确认机制；参数3：消费时的回调接口（消费时需要拿到这个消息队列中的消息）
-        channel.basicConsume("hellomq",true, new DefaultConsumer(channel){
+        channel.basicConsume("hellomq2",true, new DefaultConsumer(channel){
             @Override //参数1：类似于标签；参数2：消息传递过程中的信封；参数3：消息队列中取出的消息
             public void handleDelivery(String consumerTag, Envelope envelope, AMQP.BasicProperties properties, byte[] body) throws IOException {
                 super.handleDelivery(consumerTag, envelope, properties, body);

@@ -1,8 +1,7 @@
-package com.frank.springboot.rabbitmq;
+package com.frank.springboot.rabbitmq_helloworld;
 
 import com.frank.springboot.mqutils.RabbitMQUtils;
 import com.rabbitmq.client.*;
-import org.junit.Test;
 
 import java.io.IOException;
 import java.util.concurrent.TimeoutException;
